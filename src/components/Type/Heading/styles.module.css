@@ -1,0 +1,16 @@
+.heading {
+  font-family: IvyJournal;
+  margin: 25px 0;
+}
+
+.h2 {
+  font-size: 48px;
+  line-height: 66px;
+}
+
+@media (max-width: 992px) {
+  .h2 {
+    font-size: 36px;
+    line-height: 50px;
+  }
+}

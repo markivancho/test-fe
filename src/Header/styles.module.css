@@ -1,0 +1,46 @@
+.wrap {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: white;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-right: 90px;
+}
+
+.phone {
+  display: flex;
+  white-space: pre;
+}
+
+.underline {
+  color: inherit;
+  text-decoration-color: #ff500f;
+}
+
+@media (max-width: 992px) {
+  .wrap {
+    height: 75px;
+    justify-content: center;
+  }
+
+  .info {
+    padding-right: 0;
+  }
+
+  .center {
+    position: initial;
+    transform: none;
+  }
+}
