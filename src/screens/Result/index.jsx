@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import Heading from '../../components/Type/Heading'
+import Image from '../../components/Image'
+
 import DataContext from '../../utils/DataContext'
 
 import styles from '../../styles.module.css'
-import { Redirect } from 'react-router-dom'
 
 const Result = () => {
   const [data] = useContext(DataContext)
@@ -13,7 +15,7 @@ const Result = () => {
 
   return (
     <div className={styles.container}>
-      <img
+      <Image
         className={styles.img}
         alt=""
         src="https://i.imgur.com/m5eaZf6.png"
