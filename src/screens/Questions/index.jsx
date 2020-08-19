@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useRef, useState, useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm, Controller } from 'react-hook-form'
 import classNames from 'classnames'
@@ -25,14 +25,18 @@ const Questions = ({ questions = QUESTIONS }) => {
     control: formControl,
   } = useForm()
   const { push } = useHistory()
+  const progress = useRef(0)
 
   useEffect(() => {
     // Hacky way to reinitialize form so it won't trigger validation on next questions onChange
     reset()
   }, [currentIndex, reset])
 
+  useEffect(() => {
+    progress.current = (100 / questions.length) * (currentIndex + 1)
+  }, [currentIndex, questions.length])
+
   const [data, setData] = useContext(DataContext)
-  const progress = (100 / questions.length) * (currentIndex + 1)
   const question = questions[currentIndex]
 
   const onSubmit = (payload) => {
@@ -120,7 +124,7 @@ const Questions = ({ questions = QUESTIONS }) => {
 
   return (
     <>
-      <ProgressBar progress={progress} />
+      <ProgressBar progress={progress.current} />
       <div className={styles.container}>
         {renderQuestion(question)}
         <Button className={styles.button} onClick={handleSubmit(onSubmit)}>
