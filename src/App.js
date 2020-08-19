@@ -1,33 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
-import Blank from './Blank'
+import Header from './Header'
+import Start from './screens/Start'
+import Result from './screens/Result'
+import Questions from './screens/Questions'
 
-import Header from './Header/index'
-import Start from './Start/index'
-
-import styles from './App.module.css'
+import DataContext from './utils/DataContext'
 
 function App() {
+  const [data, setData] = useState({})
+
   return (
     <BrowserRouter>
-      <Header />
-      <div className={styles.container}>
+      <DataContext.Provider value={[data, setData]}>
+        <Header />
         <Switch>
           <Route exact path="/test-fe">
             <Start />
           </Route>
-          <Route path="/test-fe/step2">
-            <Blank />
+          <Route path="/test-fe/questions">
+            <Questions />
           </Route>
           <Route path="/test-fe/result">
-            <Blank />
+            <Result />
           </Route>
           <Route>
             <Redirect to="/test-fe" />
           </Route>
         </Switch>
-      </div>
+      </DataContext.Provider>
     </BrowserRouter>
   )
 }

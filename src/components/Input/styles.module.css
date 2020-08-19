@@ -1,0 +1,26 @@
+.input {
+  width: 294px;
+  height: 42px;
+  background: #fcfaf9;
+  border: 1px solid #afa7a6;
+  border-radius: 4px;
+  font-family: IvyStyle Sans;
+  font-size: 20px;
+  line-height: 30px;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid #000000;
+  background: #ffffff;
+}
+
+.error {
+  border: 1px solid #ff500f;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}

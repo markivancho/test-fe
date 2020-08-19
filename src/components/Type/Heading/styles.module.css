@@ -1,6 +1,10 @@
 .heading {
   font-family: IvyJournal;
   margin: 25px 0;
+  white-space: pre-line;
+  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .h2 {
