@@ -24,5 +24,5 @@ it("redirects if context is empty", () => {
   mockContext = [{}];
   const component = shallow(<Result />);
 
-  expect(component.find("Redirect").props().to).toEqual("/test-fe");
+  expect(component.find("Redirect").props().to).toEqual("/");
 });
