@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import ContentLoader from 'react-content-loader'
+import React, { useState } from "react";
+import ContentLoader from "react-content-loader";
 
 const ImagePlaceholder = () => (
   <ContentLoader
@@ -12,22 +12,22 @@ const ImagePlaceholder = () => (
   >
     <rect x="2" y="2" rx="0" ry="0" width="500" height="400" />
   </ContentLoader>
-)
+);
 
 const Image = ({ alt, ...props }) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <>
       {!isImageLoaded && <ImagePlaceholder />}
       <img
         {...props}
-        style={{ display: `${isImageLoaded ? 'block' : 'none'}` }}
+        style={{ display: `${isImageLoaded ? "block" : "none"}` }}
         alt={alt}
         onLoad={() => setTimeout(() => setIsImageLoaded(true), 1500)}
       />
     </>
-  )
-}
+  );
+};
 
-export default Image
+export default Image;

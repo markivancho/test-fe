@@ -1,9 +1,9 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from "react";
+import classNames from "classnames";
 
-import Text from '../Text'
+import Text from "../Text";
 
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 const Paragraph = ({ children, className, ...props }) => (
   <Text
@@ -13,6 +13,6 @@ const Paragraph = ({ children, className, ...props }) => (
   >
     {children}
   </Text>
-)
+);
 
-export default Paragraph
+export default Paragraph;

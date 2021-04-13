@@ -1,9 +1,9 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from "react";
+import classNames from "classnames";
 
-import Text from '../Type/Text'
+import Text from "../Type/Text";
 
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 const Input = ({
   children,
@@ -16,7 +16,7 @@ const Input = ({
   ...props
 }) => (
   <div className={styles.field}>
-    {label && <Text color={error ? 'red' : 'grey'}>{label}</Text>}
+    {label && <Text color={error ? "red" : "grey"}>{label}</Text>}
     {children ? (
       children
     ) : (
@@ -34,8 +34,8 @@ const Input = ({
     )}
     {error && <Text color="red">{error}</Text>}
   </div>
-)
+);
 
 export default React.forwardRef((props, ref) => (
   <Input {...props} forwardedRef={ref} />
-))
+));

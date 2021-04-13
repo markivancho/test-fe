@@ -1,7 +1,7 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from "react";
+import classNames from "classnames";
 
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 const Button = ({ type, children, className, ...props }) => (
   <button
@@ -11,10 +11,10 @@ const Button = ({ type, children, className, ...props }) => (
   >
     {children}
   </button>
-)
+);
 
 Button.defaultProps = {
-  type: 'button',
-}
+  type: "button",
+};
 
-export default Button
+export default Button;
