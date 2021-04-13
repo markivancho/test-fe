@@ -1,58 +1,58 @@
-import React, { useRef, useState, useContext, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import { useForm, Controller } from 'react-hook-form'
-import classNames from 'classnames'
+import React, { useRef, useState, useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useForm, Controller } from "react-hook-form";
+import classNames from "classnames";
 
-import Heading from '../../components/Type/Heading'
-import Button from '../../components/Button'
-import ProgressBar from '../../components/ProgressBar'
-import Input from '../../components/Input'
-import Masked from '../../components/MaskedInput'
+import Heading from "../../components/Type/Heading";
+import Button from "../../components/Button";
+import ProgressBar from "../../components/ProgressBar";
+import Input from "../../components/Input";
+import Masked from "../../components/MaskedInput";
 
-import DataContext from '../../utils/DataContext'
-import { QUESTIONS, getSelectOptions } from './values'
+import DataContext from "../../utils/DataContext";
+import { QUESTIONS, getSelectOptions } from "./values";
 
-import styles from './styles.module.css'
-import Select from '../../components/Select'
+import styles from "./styles.module.css";
+import Select from "../../components/Select";
 
 const Questions = ({ questions = QUESTIONS }) => {
-  const [currentIndex, bumpIndex] = useState(0)
+  const [currentIndex, bumpIndex] = useState(0);
   const {
     reset,
     register,
     handleSubmit,
     errors,
     control: formControl,
-  } = useForm()
-  const { push } = useHistory()
-  const progress = useRef(0)
+  } = useForm();
+  const { push } = useHistory();
+  const progress = useRef(0);
 
   useEffect(() => {
     // Hacky way to reinitialize form so it won't trigger validation on next questions onChange
-    reset()
-  }, [currentIndex, reset])
+    reset();
+  }, [currentIndex, reset]);
 
   useEffect(() => {
-    progress.current = (100 / questions.length) * (currentIndex + 1)
-  }, [currentIndex, questions.length])
+    progress.current = (100 / questions.length) * (currentIndex + 1);
+  }, [currentIndex, questions.length]);
 
-  const [data, setData] = useContext(DataContext)
-  const question = questions[currentIndex]
+  const [data, setData] = useContext(DataContext);
+  const question = questions[currentIndex];
 
   const onSubmit = (payload) => {
-    setData({ ...data, ...payload })
+    setData({ ...data, ...payload });
     if (questions.length !== currentIndex + 1) {
-      bumpIndex(currentIndex + 1)
+      bumpIndex(currentIndex + 1);
     } else {
-      push('/test-fe/result')
+      push("/result");
     }
-  }
+  };
 
   const renderQuestion = ({ title, fields }) => {
     const renderedFields = fields.map(
       ({ name, validation, type, label, mask, control }) => {
         switch (control) {
-          case 'input':
+          case "input":
             return (
               <Input
                 key={name}
@@ -62,8 +62,8 @@ const Questions = ({ questions = QUESTIONS }) => {
                 label={label}
                 error={errors[name]?.message}
               />
-            )
-          case 'mask':
+            );
+          case "mask":
             return (
               <Controller
                 key={name}
@@ -79,8 +79,8 @@ const Questions = ({ questions = QUESTIONS }) => {
                 control={formControl}
                 defaultValue=""
               />
-            )
-          case 'select':
+            );
+          case "select":
             return (
               <Controller
                 key={name}
@@ -101,12 +101,12 @@ const Questions = ({ questions = QUESTIONS }) => {
                 control={formControl}
                 defaultValue=""
               />
-            )
+            );
           default:
-            return ''
+            return "";
         }
       }
-    )
+    );
 
     return (
       <>
@@ -119,8 +119,8 @@ const Questions = ({ questions = QUESTIONS }) => {
           {renderedFields}
         </div>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -128,11 +128,11 @@ const Questions = ({ questions = QUESTIONS }) => {
       <div className={styles.container}>
         {renderQuestion(question)}
         <Button className={styles.button} onClick={handleSubmit(onSubmit)}>
-          {questions.length === currentIndex + 1 ? 'Finish' : 'Next'}
+          {questions.length === currentIndex + 1 ? "Finish" : "Next"}
         </Button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Questions
+export default Questions;

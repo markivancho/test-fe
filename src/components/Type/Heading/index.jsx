@@ -1,9 +1,9 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from "react";
+import classNames from "classnames";
 
-import Text from '../Text'
+import Text from "../Text";
 
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 const Heading = ({ children, level, ...props }) => (
   <Text
@@ -13,10 +13,10 @@ const Heading = ({ children, level, ...props }) => (
   >
     {children}
   </Text>
-)
+);
 
 Heading.defaultProps = {
-  level: 'h2',
-}
+  level: "h2",
+};
 
-export default Heading
+export default Heading;
